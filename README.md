@@ -8,28 +8,28 @@
 
 ## Fork
 
-[This](https://github.com/panta/machineid) is a fork of [github.com/denisbrodbeck/machineid](https://github.com/denisbrodbeck/machineid).
+[This](https://github.com/alfonmga/machineid) is a fork of [github.com/denisbrodbeck/machineid](https://github.com/denisbrodbeck/machineid).
 The fork solve some issues in the original library (docker support and customizable machine-id file, macOS cron support, ...).
 
 ## Main Features
 
-* Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
-* No admin privileges required
-* Hardware independent (no usage of MAC, BIOS or CPU — those are too unreliable, especially in a VM environment)
-* IDs are unique<sup>[1](#unique-key-reliability)</sup> to the installed OS
+- Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
+- No admin privileges required
+- Hardware independent (no usage of MAC, BIOS or CPU — those are too unreliable, especially in a VM environment)
+- IDs are unique<sup>[1](#unique-key-reliability)</sup> to the installed OS
 
 ## Installation
 
 Get the library with
 
 ```bash
-go get github.com/panta/machineid
+go get github.com/alfonmga/machineid
 ```
 
 You can also add the cli app directly to your `$GOPATH/bin` with
 
 ```bash
-go get github.com/panta/machineid/cmd/machineid
+go get github.com/alfonmga/machineid/cmd/machineid
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ package main
 import (
   "fmt"
   "log"
-  "github.com/panta/machineid"
+  "github.com/alfonmga/machineid"
 )
 
 func main() {
@@ -60,7 +60,7 @@ package main
 import (
   "fmt"
   "log"
-  "github.com/panta/machineid"
+  "github.com/alfonmga/machineid"
 )
 
 func main() {
@@ -88,10 +88,10 @@ All machine IDs are usually generated during system installation and stay consta
 
 The following sources are used:
 
-* **BSD** uses `/etc/hostid` and `smbios.system.uuid` as a fallback
-* **Linux** uses `$MACHINE_ID_FILE` (if not empty), `/var/lib/dbus/machine-id`, `/etc/machine-id` ([man](http://man7.org/linux/man-pages/man5/machine-id.5.html))
-* **OS X** uses `IOPlatformUUID`
-* **Windows** uses the `MachineGuid` from `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
+- **BSD** uses `/etc/hostid` and `smbios.system.uuid` as a fallback
+- **Linux** uses `$MACHINE_ID_FILE` (if not empty), `/var/lib/dbus/machine-id`, `/etc/machine-id` ([man](http://man7.org/linux/man-pages/man5/machine-id.5.html))
+- **OS X** uses `IOPlatformUUID`
+- **Windows** uses the `MachineGuid` from `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
 
 ## Unique Key Reliability
 
@@ -118,7 +118,7 @@ import (
   "crypto/hmac"
   "crypto/sha256"
   "fmt"
-  "github.com/panta/machineid"
+  "github.com/alfonmga/machineid"
 )
 
 const appKey = "WowSuchNiceApp"
@@ -173,10 +173,12 @@ Windows:
 ```batch
 reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography /v MachineGuid
 ```
+
 or
-* Open Windows Registry via `regedit`
-* Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
-* Take value of key `MachineGuid`
+
+- Open Windows Registry via `regedit`
+- Navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Cryptography`
+- Take value of key `MachineGuid`
 
 ## Credits
 
